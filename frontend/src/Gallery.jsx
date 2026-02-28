@@ -8,13 +8,13 @@ function Gallery() {
   const [lightbox, setLightbox] = useState(null);
 
   const images = [
-    { src: "public/images/gallery1.jpg", },
-    { src: "public/images/gallery2.jpg", },
-    { src: "public/images/gallery3.jpg", },
-    { src: "public/images/gallery4.jpg", },
-    { src: "public/images/gallery5.jpg", },
-    { src: "public/images/gallery6.jpg", },
-    { src: "public/images/gallery7.jpg", },
+    { src: "/images/gallery1.jpg", },
+    { src: "/images/gallery2.jpg", },
+    { src: "/images/gallery3.jpg", },
+    { src: "/images/gallery4.jpg", },
+    { src: "images/gallery5.jpg", },
+    { src: "/images/gallery6.jpg", },
+    { src: "/images/gallery7.jpg", },
   ];
 
   const visible = 5; // how many images shown at once

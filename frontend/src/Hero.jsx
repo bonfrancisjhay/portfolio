@@ -9,7 +9,7 @@ function Hero() {
     <section className={`w-full ${dark ? "bg-black text-white" : "bg-white text-black"}`}>
 
 <div className="flex flex-row items-center justify-start gap-8 py-20 px-10 max-w-5xl mx-auto">
-      <img src="public/images/profile1.jpg" alt="Francis Jhay Bon"
+      <img src="/images/profile1.jpg" alt="Francis Jhay Bon"
         className="w-40 h-40 object-cover" />
 
       <div className="flex flex-col items-start">
