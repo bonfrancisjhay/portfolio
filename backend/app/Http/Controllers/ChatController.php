@@ -64,22 +64,14 @@ class ChatController extends Controller
             $botMessage = $data['candidates'][0]['content']['parts'][0]['text']
                 ?? 'Sorry, I could not generate a response.';
 
-            // ← Updated return with CORS headers
             return response()->json([
                 'message' => $botMessage
-            ])
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+            ]);
 
         } catch (\Exception $e) {
-            // ← Updated catch return with CORS headers
             return response()->json([
                 'message' => 'Error connecting to Gemini: ' . $e->getMessage()
-            ], 500)
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+            ], 500);
         }
     }
 }
