@@ -6,7 +6,7 @@ function TypingDots({ dark }) {
   return (
     <div className="flex justify-start items-end gap-2">
         <img
-        src="public/images/profile1.jpg"
+        src="/images/profile1.jpg"
         alt="Francis"
         className="w-7 h-7 rounded-full object-cover flex-shrink-0"
       />
@@ -89,7 +89,7 @@ function Chat() {
           <div className="bg-gray-600 px-4 py-3 flex items-center gap-3">
             <div className="relative">
               <img
-                src="public/images/profile1.jpg"  
+                src="/images/profile1.jpg"  
                 alt="Francis"
                 className="w-9 h-9 rounded-full object-cover"
               />
@@ -114,7 +114,7 @@ function Chat() {
                   <div className="w-7 h-7 flex-shrink-0">
                     {msg.isLast && (
                       <img
-                      src="public/images/profile1.jpg"
+                      src="/images/profile1.jpg"
                       alt="Francis"
                       className="w-7 h-7 rounded-full object-cover"
                     />
