@@ -1,0 +1,87 @@
+import { useTheme } from "./ThemeContext";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+
+function Gallery() {
+  const { dark } = useTheme();
+  const [start, setStart] = useState(0);
+  const [lightbox, setLightbox] = useState(null);
+
+  const images = [
+    { src: "public/images/gallery1.jpg", },
+    { src: "public/images/gallery2.jpg", },
+    { src: "public/images/gallery3.jpg", },
+    { src: "public/images/gallery4.jpg", },
+    { src: "public/images/gallery5.jpg", },
+    { src: "public/images/gallery6.jpg", },
+    { src: "public/images/gallery7.jpg", },
+  ];
+
+  const visible = 5; // how many images shown at once
+  const canPrev = start > 0;
+  const canNext = start + visible < images.length;
+
+  const prev = () => { if (canPrev) setStart((s) => s - 1); };
+  const next = () => { if (canNext) setStart((s) => s + 1); };
+
+  return (
+    <section className={`w-full ${dark ? "bg-black text-white" : "bg-white text-black"}`}>
+      <div className="max-w-5xl mx-auto px-10 py-10">
+        <h2 className="text-xl font-bold mb-6">Gallery</h2>
+
+        {/* Carousel Row */}
+        <div className="flex items-center gap-3">
+
+          {/* Left Arrow */}
+          <button onClick={prev}
+            className={`flex-shrink-0 p-1 transition
+              ${canPrev
+                ? dark ? "text-white" : "text-black"
+                : dark ? "text-gray-700" : "text-gray-300"}`}>
+            <ChevronLeft size={28} />
+          </button>
+
+          {/* Images */}
+          <div className="flex gap-3 overflow-hidden flex-1">
+            {images.slice(start, start + visible).map((img, i) => (
+              <div key={i}
+                onClick={() => setLightbox(start + i)}
+                className="flex-1 cursor-zoom-in overflow-hidden">
+                <img
+                  src={img.src}
+                  alt={img.caption}
+                  className="w-full h-38 object-cover hover:opacity-80 transition"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Right Arrow */}
+          <button onClick={next}
+            className={`flex-shrink-0 p-1 transition
+              ${canNext
+                ? dark ? "text-white" : "text-black"
+                : dark ? "text-gray-700" : "text-gray-300"}`}>
+            <ChevronRight size={28} />
+          </button>
+
+        </div>
+      </div>
+
+      {/* Lightbox */}
+      {lightbox !== null && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          onClick={() => setLightbox(null)}>
+          <button className="absolute top-4 right-4 text-white"
+            onClick={() => setLightbox(null)}>
+            <X size={28} />
+          </button>
+          <img src={images[lightbox].src} alt={images[lightbox].caption}
+            className="max-w-3xl max-h-screen rounded-lg object-contain" />
+        </div>
+      )}
+    </section>
+  );
+}
+
+export default Gallery;
