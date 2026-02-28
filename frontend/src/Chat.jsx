@@ -43,7 +43,7 @@ function Chat() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://portfolio-production-xxxx.up.railway.app/api/chat", {
+      const res = await fetch("https://portfolio-production-fca5.up.railway.app/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message }),
