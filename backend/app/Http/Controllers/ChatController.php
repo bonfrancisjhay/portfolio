@@ -25,9 +25,9 @@ class ChatController extends Controller
         - Tools: Git, GitHub, VS Code
 
         === PROJECTS ===
-        1. HomeSeek - Tech used: PHP, Javascript, HTML, CSS, Bootstrap. Link: yourlink.com
-        2. TinkerPro-Website - Tech used: React. Link: yourlink.com
-        3. Portfolio - Tech used: React, MySQL, Laravel. Link: yourlink.com
+        1. HomeSeek - Tech used: PHP, Javascript, HTML, CSS, Bootstrap.
+        2. TinkerPro-Website - Tech used: React.
+        3. Portfolio - Tech used: React, MySQL, Laravel.
 
         === EDUCATION ===
         Bachelor Of Science in Industrial Technology - Lapu-Lapu City College, graduated 2025-2026
@@ -37,32 +37,52 @@ class ChatController extends Controller
 
         === CONTACT ===
         Email: bonfrancisjhay@gmail.com
-        GitHub: github.com/yourhandle
+        GitHub: github.com/bonfrancisjhay
         LinkedIn: linkedin.com/in/yourhandle
 
         User question: " . $userMessage;
 
         $apiKey = env('GEMINI_API_KEY');
 
+        if (!$apiKey) {
+            return response()->json([
+                'message' => 'Configuration error. Please contact the administrator.'
+            ]);
+        }
+
         try {
-            $response = Http::withOptions(['verify' => false])
-                ->post(
-                    'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' . $apiKey,
-                    [
-                        "contents" => [
-                            [
-                                "parts" => [
-                                    ["text" => $prompt]
-                                ]
+            $response = Http::withOptions([
+                'verify' => false,
+                'timeout' => 30,
+                'connect_timeout' => 10,
+                'proxy' => '',
+            ])->post(
+                'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' . $apiKey,
+                [
+                    "contents" => [
+                        [
+                            "parts" => [
+                                ["text" => $prompt]
                             ]
                         ]
                     ]
-                );
+                ]
+            );
 
             $data = $response->json();
 
-            $botMessage = $data['candidates'][0]['content']['parts'][0]['text']
-                ?? 'Sorry, I could not generate a response.';
+            if (!isset($data['candidates'][0]['content']['parts'][0]['text'])) {
+                if (isset($data['error']['code']) && $data['error']['code'] == 429) {
+                    return response()->json([
+                        'message' => 'I am temporarily unavailable due to high traffic. Please try again later! 😊'
+                    ]);
+                }
+                return response()->json([
+                    'message' => 'Sorry, something went wrong. Please try again!'
+                ]);
+            }
+
+            $botMessage = $data['candidates'][0]['content']['parts'][0]['text'];
 
             return response()->json([
                 'message' => $botMessage
@@ -70,7 +90,7 @@ class ChatController extends Controller
 
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Error connecting to Gemini: ' . $e->getMessage()
+                'message' => 'Error connecting to server. Please try again later.'
             ], 500);
         }
     }

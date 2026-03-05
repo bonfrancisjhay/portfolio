@@ -1,6 +1,5 @@
 import { useTheme } from "./ThemeContext";
 
-// Map tech names to their Simple Icons slugs
 const techIcons = {
   React: "react",
   JavaScript: "javascript",
@@ -11,7 +10,6 @@ const techIcons = {
   Git: "git",
 };
 
-// Brand colors for each icon
 const techColors = {
   React: "#61DAFB",
   JavaScript: "#F7DF1E",
@@ -44,7 +42,7 @@ function TechStack() {
   const backend = ["PHP", "Laravel", "MySQL", "Git"];
 
   return (
-    <div>
+    <div className="w-full">
       <h2 className="text-xl font-bold mb-4">Tech Stack</h2>
 
       {/* Frontend */}

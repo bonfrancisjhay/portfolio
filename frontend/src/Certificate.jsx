@@ -9,7 +9,7 @@ function Certificate() {
 
   return (
     <section className={`w-full ${dark ? "bg-black text-white" : "bg-white text-black"}`}>
-      <div className="max-w-5xl mx-auto px-10 py-10">
+      <div className="max-w-5xl mx-auto px-4 md:px-10 py-10">
         <h2 className="text-xl font-bold mb-6">Certificates</h2>
         <div className="flex flex-col gap-3">
           {certificates.map((cert) => (

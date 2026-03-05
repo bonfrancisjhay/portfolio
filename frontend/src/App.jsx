@@ -20,7 +20,7 @@ function AppContent() {
       <About />
 
       {/* Grid: TechStack+Projects LEFT, Experience RIGHT */}
-      <div className="max-w-5xl mx-auto px-10 grid grid-cols-1 md:grid-cols-2 gap-10 py-6 item-center">
+      <div className="max-w-5xl mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-10 py-6">
         
         {/* LEFT */}
         <div className="flex flex-col gap-6">
