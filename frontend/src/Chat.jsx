@@ -52,7 +52,7 @@ function Chat() {
 
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, {
-      method: "POST",  // ← This is missing!
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message }),
     });
