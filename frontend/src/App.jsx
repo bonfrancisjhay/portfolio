@@ -11,6 +11,7 @@ import Gallery from './Gallery';
 import Footer from './Footer';
 import Chat from './Chat';
 import ResumeAnalyzer from './ResumeAnalyzer';
+import { Analytics} from "@vercel/analytics/react";
 
 function Home() {
   const { dark } = useTheme();
@@ -42,6 +43,7 @@ function App() {
         <Footer />
         <Chat />
       </BrowserRouter>
+      <Analytics />
     </ThemeProvider>
   );
 }
