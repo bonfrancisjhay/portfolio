@@ -1,5 +1,5 @@
 import { useTheme } from "./ThemeContext";
-import { Mail, Github, MapPin, FileSearch } from "lucide-react";
+import { Mail, Github, MapPin, FileSearch, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Hero() {
@@ -81,6 +81,17 @@ function Hero() {
               <FileSearch size={16} />
                Resume Analyzer
             </Link>
+            <a 
+              href="/images/francis-cv.pdf"
+              download="FRANCIS_JHAY_BON_CV.pdf"
+              className={`border px-3 py-1.5 rounded transition flex items-center gap-2 text-sm
+                ${dark
+                  ? "border-white hover:bg-white hover:text-black"
+                  : "border-black hover:bg-black hover:text-white"}`}
+                  >
+               <Download size={16} />
+               Download CV     
+            </a>
           </div>
         </div>
       </div>
