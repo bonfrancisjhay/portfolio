@@ -8,7 +8,7 @@ function Gallery() {
   const [lightbox, setLightbox] = useState(null);
 
   const images = [
-    { src: "/images/gallery1.jpg" },
+    { src: "/images/profile.JPG" },
     { src: "/images/gallery2.jpg" },
     { src: "/images/gallery3.jpg" },
     { src: "/images/gallery4.jpg" },

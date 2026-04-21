@@ -6,7 +6,7 @@ import About from './About';
 import TechStack from './TechStack';
 import Projects from './Projects';
 import Experience from './Experience';
-import Certificate from './Certificate';
+// import Certificate from './Certificate';
 import Gallery from './Gallery';
 import Footer from './Footer';
 import Chat from './Chat';
@@ -26,7 +26,6 @@ function Home() {
         </div>
         <Experience />
       </div>
-      <Certificate />
       <Gallery />
     </div>
   );

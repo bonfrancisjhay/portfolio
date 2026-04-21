@@ -3,9 +3,7 @@ import { useTheme } from "./ThemeContext";
 function Certificate() {
   const { dark } = useTheme();
 
-  const certificates = [
-    { title: "Quality Assurance/Tester", issuer: "TinkerPro Technologies Inc.", year: "2026" },
-  ];
+
 
   return (
     <section className={`w-full ${dark ? "bg-black text-white" : "bg-white text-black"}`}>

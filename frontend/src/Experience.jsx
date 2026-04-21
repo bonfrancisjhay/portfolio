@@ -4,7 +4,7 @@ function Experience() {
   const { dark } = useTheme();
 
   const experiences = [
-    { role: "Quality Assurance", company: "TinkerPro Technologies Inc.", year: "2026" },
+    { role: "Quality Assurance / Tester", company: "TinkerPro Technologies Inc.", year: "2026" },
     { role: "BS Industrial Technology", company: "Lapu-Lapu City College", year: "2026" },
     { role: "Hello World!", company: "Wrote my first line of code", year: "2023" },
   ];
