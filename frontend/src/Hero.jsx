@@ -142,7 +142,7 @@ function Hero() {
                 <label className={`text-xs mb-1 block ${dark ? "text-neutral-400" : "text-neutral-500"}`}>Your name</label>
                 <input
                   type="text"
-                  placeholder="Jane Doe"
+                  placeholder="Francis Jhay Bon"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   className={inputClass}
@@ -152,7 +152,7 @@ function Hero() {
                 <label className={`text-xs mb-1 block ${dark ? "text-neutral-400" : "text-neutral-500"}`}>Your email</label>
                 <input
                   type="email"
-                  placeholder="jane@example.com"
+                  placeholder="bonfrancisjhay@example.com"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className={inputClass}

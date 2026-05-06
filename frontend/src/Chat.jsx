@@ -34,13 +34,13 @@ function Chat() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
-  const speackResponse = (text) => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US";
-    utterance.rate = 1;
-    utterance.pitch = 1;
-    window.speechSynthesis.speak(utterance);
-  };
+  // const speackResponse = (text) => {
+  //   const utterance = new SpeechSynthesisUtterance(text);
+  //   utterance.lang = "en-US";
+  //   utterance.rate = 1;
+  //   utterance.pitch = 1;
+  //   window.speechSynthesis.speak(utterance);
+  // };
 
   const sendMessage = async () => {
     if (!message.trim()) return;
@@ -59,7 +59,7 @@ function Chat() {
 
       const data = await res.json();
       setMessages((prev) => [...prev, { from: "bot", text: data.message || "No response." }]);
-      speackResponse(data.message || "No response.");
+      // speackResponse(data.message || "No response.");
     } catch (err) {
       setMessages((prev) => [...prev, { from: "bot", text: "Error connecting to server." }]);
     }
