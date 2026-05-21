@@ -12,6 +12,7 @@ import Footer from './Footer';
 import Chat from './Chat';
 import ResumeAnalyzer from './ResumeAnalyzer';
 import { Analytics} from "@vercel/analytics/react";
+import Maintenance from "./Maintenance";
 
 function Home() {
   const { dark } = useTheme();
@@ -38,6 +39,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/resume-analyzer" element={<ResumeAnalyzer />} />
+          <Route
+            path="/maintenance"
+            element={<Maintenance />}
+          />
         </Routes>
         <Footer />
         <Chat />

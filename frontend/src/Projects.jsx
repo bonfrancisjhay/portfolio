@@ -1,11 +1,12 @@
 import { useTheme } from "./ThemeContext";
+import { Link } from "react-router-dom";
 
 function Projects() {
   const { dark } = useTheme();
 
   const projects = [
-    { title: "HomeSeek", desc: "Web-based Platform to Find Your Ideal Boarding House.", link: "#" },
-    { title: "HomeSeek V2", desc: "Web-based Platform to Find Your Ideal Boarding House.", link: "#" },
+    { title: "HomeSeek", desc: "Web-based Platform to Find Your Ideal Boarding House.", link: "/maintenance" },
+    // { title: "HomeSeek V2", desc: "Web-based Platform to Find Your Ideal Boarding House.", link: "#" },
   ];
 
   return (
@@ -17,7 +18,12 @@ function Projects() {
             ${dark ? "border-gray-700" : "border-gray-300"}`}>
             <h3 className="font-semibold">{p.title}</h3>
             <p className={`text-sm mt-1 ${dark ? "text-gray-400" : "text-gray-500"}`}>{p.desc}</p>
-            <a href={p.link} className="text-sm text-blue-400 mt-1 inline-block">View →</a>
+            <Link
+              to={p.link}
+              className="text-sm text-blue-400 mt-1 inline-block"
+            >
+              View →
+            </Link>
           </div>
         ))}
       </div>
