@@ -1,10 +1,12 @@
 import { useTheme } from "./ThemeContext";
+import { useDomino } from './UseDomino'; 
 
 function About() {
   const { dark } = useTheme();
+  const ref = useDomino(1);
 
   return (
-    <section className={`pt-2 pb-10 md:pb-20 px-4 flex flex-col ${dark ? "bg-black text-white" : "bg-white text-black"}`}>
+    <section ref={ref} className="pt-2 pb-10 md:pb-20 px-4 flex flex-col">
       <div className="flex flex-col w-full max-w-5xl mx-auto px-0 md:pl-10">
         <h2 className="text-xl font-bold mb-4">About</h2>
         <p className={`text-md leading-relaxed max-w-xl ${dark ? "text-gray-300" : "text-gray-600"}`}>

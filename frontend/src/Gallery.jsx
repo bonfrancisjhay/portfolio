@@ -1,14 +1,16 @@
 import { useTheme } from "./ThemeContext";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useDomino } from './UseDomino'; 
+
 
 function Gallery() {
   const { dark } = useTheme();
+  const ref = useDomino(4); 
   const [start, setStart] = useState(0);
   const [lightbox, setLightbox] = useState(null);
 
   const images = [
-    { src: "/images/profile.JPG" },
     { src: "/images/gallery2.jpg" },
     { src: "/images/gallery3.jpg" },
     { src: "/images/gallery4.jpg" },
@@ -28,7 +30,8 @@ function Gallery() {
   const next = () => { if (canNext) setStart((s) => s + 1); };
 
   return (
-    <section className={`w-full ${dark ? "bg-black text-white" : "bg-white text-black"}`}>
+    <>
+    <section ref={ref} className={`w-full ${dark ? "bg-black text-white" : "bg-white text-black"}`}>
       <div className="max-w-5xl mx-auto px-4 md:px-10 py-10">
         <h2 className="text-xl font-bold mb-6">Gallery</h2>
 
@@ -73,7 +76,9 @@ function Gallery() {
         </div>
       </div>
 
-      {/* Lightbox */}
+      
+    </section>
+    {/* Lightbox */}
       {lightbox !== null && (
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4"
@@ -92,8 +97,9 @@ function Gallery() {
           />
         </div>
       )}
-    </section>
+      </>
   );
+  
 }
 
 export default Gallery;

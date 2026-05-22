@@ -1,7 +1,11 @@
 import { useTheme } from "./ThemeContext";
+import { useDomino } from './UseDomino'; 
+
 
 function Experience() {
   const { dark } = useTheme();
+  const ref = useDomino(2); 
+
 
   const experiences = [
     { role: "QA Tester Intern", company: "TinkerPro Technologies Inc.", year: "2026" },
@@ -10,7 +14,7 @@ function Experience() {
   ];
 
   return (
-    <section className="w-full">
+    <section ref={ref} className="w-full">
       <h2 className="text-xl font-bold mb-4">Experience</h2>
       <div className="flex flex-col gap-4">
         {experiences.map((e) => (

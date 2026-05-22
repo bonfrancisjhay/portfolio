@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useTheme } from "./ThemeContext";
+import { useDomino } from './UseDomino'; 
 import { Mail, Github, MapPin, FileSearch, Download, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 
 function Hero() {
   const { dark, setDark } = useTheme();
+  const ref = useDomino(0); 
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
@@ -47,12 +49,13 @@ function Hero() {
       : "border-black hover:bg-black hover:text-white"}`;
 
   return (
-    <section className={`w-full ${dark ? "bg-black text-white" : "bg-white text-black"}`}>
+    <>
+    <section ref={ref} className={`w-full ${dark ? "bg-black text-white" : "bg-white text-black"}`}>
       <div className="flex flex-col md:flex-row items-center md:items-center justify-start gap-6 md:gap-8 py-12 md:py-20 px-4 md:px-10 max-w-5xl mx-auto">
 
         {/* Profile Image */}
         <img
-          src="/images/profile.JPG"
+          src="/images/profile.png"
           alt="Francis Jhay Bon"
           className="w-28 h-28 md:w-40 md:h-40 object-cover rounded-full md:rounded-none flex-shrink-0"
         />
@@ -117,8 +120,8 @@ function Hero() {
            </div> {/* end buttons */}
         </div> {/* end info */}
       </div> {/* end flex row */}
-
-      {/* Email Modal */}
+    </section>
+    {/* Email Modal */}
       {open && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4"
@@ -189,7 +192,7 @@ function Hero() {
           </div>
         </div>
       )}
-    </section>
+      </>
   );
 }
 

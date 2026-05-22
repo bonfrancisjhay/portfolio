@@ -1,4 +1,6 @@
 import { useTheme } from "./ThemeContext";
+import { useDomino } from './UseDomino'; 
+
 
 const techIcons = {
   React: "react",
@@ -24,6 +26,7 @@ function TechIcon({ name }) {
   const slug = techIcons[name];
   const color = techColors[name];
 
+
   return (
     <img
       src={`https://cdn.simpleicons.org/${slug}/${color.replace("#", "")}`}
@@ -37,12 +40,14 @@ function TechIcon({ name }) {
 
 function TechStack() {
   const { dark } = useTheme();
+  const ref = useDomino(2); 
+
 
   const frontend = ["React", "JavaScript", "TailwindCSS"];
   const backend = ["PHP", "Laravel", "MySQL", "Git"];
 
   return (
-    <div className="w-full">
+    <div ref={ref} className="w-full">
       <h2 className="text-xl font-bold mb-4">Tech Stack</h2>
 
       {/* Frontend */}

@@ -1,8 +1,12 @@
 import { useTheme } from "./ThemeContext";
 import { Link } from "react-router-dom";
+import { useDomino } from './UseDomino'; 
+
 
 function Projects() {
   const { dark } = useTheme();
+  const ref = useDomino(3); 
+
 
   const projects = [
     { title: "HomeSeek", desc: "Web-based Platform to Find Your Ideal Boarding House.", link: "/maintenance" },
@@ -10,7 +14,7 @@ function Projects() {
   ];
 
   return (
-    <div className="w-full">
+    <div ref={ref} className="w-full">
       <h2 className="text-xl font-bold mb-4">Recent Projects</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {projects.map((p) => (
