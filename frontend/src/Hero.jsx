@@ -110,7 +110,7 @@ function Hero() {
             </Link>
 
             
-             <a href="/images/francis-cv.pdf"
+             <a href="/images/francisjhaybon-cv.pdf"
               download="FRANCIS_JHAY_BON_CV.pdf"
               className={btnClass}
             >
